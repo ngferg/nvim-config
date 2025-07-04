@@ -10,3 +10,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.opt.relativenumber = true
+vim.opt.number = true
+
