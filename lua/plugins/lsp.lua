@@ -13,6 +13,27 @@ return {
       },
     },
     config = function()
+      vim.diagnostic.config({ virtual_text = true })
+      require("lspconfig").rust_analyzer.setup({
+        cmd = {
+          "rustup",
+          "run",
+          "stable",
+          "rust-analyzer",
+        },
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              buildScripts = {
+                enable = true,
+              },
+            },
+            procMacro = {
+              enable = true,
+            },
+          },
+        },
+      })
       require("lspconfig").lua_ls.setup {}
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
